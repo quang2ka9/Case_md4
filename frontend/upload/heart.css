@@ -1,0 +1,19 @@
+.like-container {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.fas.fa-heart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    color: #460202;
+    transition: all 0.3s ease-in-out; /*Thêm hiệu ứng transition*/
+}
+
+.like-container.active .fas.fa-heart {
+    color: pink; /*Thay đổi màu sắc khi active*/
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+            integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/8.5.1/jsonwebtoken.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="upload/Toast.css">
+    <link rel="stylesheet" href="user/login.css">
+    <link rel="stylesheet" href="upload/heart.css">
+
+
+</head>
+
+<body>
+
+<div class="blog">
+    <div class="blog-part is-menu">
+        <a href="#" class="blog-menu">
+            Blog
+            <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-arrow-up-right" viewBox="0 0 24 24">
+                <path d="M7 17L17 7M7 7h10v10"/>
+            </svg>
+        </a>
+        <a href="#" class="blog-menu" onclick="showHome()">Home</a>
+        <a href="#" class="blog-menu" onclick="showFormAdd()">Add</a>
+        <a href="#" class="blog-menu" onclick="showFormLogin()">Login</a>
+        <a href="#" class="blog-menu" onclick="showFormDangKy()">Register</a>
+        <a href="#" class="blog-menu" onclick="showUser()">ListUser</a>
+        <a href="#" class="blog-menu" onclick="logout()">Logout</a>
+        <a href="#" class="blog-menu mention">Welcome to join us!!</a>
+        <a href="#" id="username-display" class="blog-menu subscribe"></a>
+    </div>
+    <div class="blog-header blog-is-sticky">
+        <div class="blog-article header-article">
+            <div class="blog-big__title">Title</div>
+            <div class="blog-menu rounded small-title">Pinned Issue</div>
+
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id= "search" class="search_abc" type = "search" name="search" placeholder="search" required>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button onclick="search($('#search').val())">SearchPost</button>
+            <button onclick="searchUser($('#search').val())">SearchUser</button>
+
+        </div>
+        <div class="dropdown">
+            <button style="margin: 20px;font-size: 20px" onclick="toggleDropdown()" class="dropbtn blog-menu rounded small-title">Category</button>
+            <div id="dropdown-content">
+                <!-- các trường để chọn ở đây -->
+                <a href="#">Lựa chọn 1</a>
+                <a href="#">Lựa chọn 2</a>
+                <a href="#">Lựa chọn 3</a>
+            </div>
+        </div>
+        <button onclick="showCategory()">Category</button>
+        <div class="blog-article page-number">
+            NO. 01
+        </div>
+    </div>
+    <div class="blog-header-container">
+        <div class="blog-header">
+            <div class="blog-article">
+                <div id="body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-part right-blog">
+        <marquee width="100%" direction="left">
+            <span>Now And Then You Miss It Sounds Make You Cry</span>
+            <span>Now In - MoMa Sharing Exhibition NOW</span>
+            <span>NYC Opens After Long Lockdown Check</span>
+        </marquee>
+        <div class="blog-right-title-container">
+            <div class="blog-right-title">
+                Featured Articles
+            </div>
+            <div class="blog-menu rounded">See All</div>
+        </div>
+        <div class="blog-right">
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">1</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">Blonde - Widespread Acclaim</div>
+                <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's
+                    introspective lyrics and the album's
+                </div>
+            </div>
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">2</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">Introspective Lyrics and Beats</div>
+                <div class="blog-right-page-subtitle">When we toured Scotland we stopped at several selft-sealing hpuses
+                    because hotels would
+                </div>
+            </div>
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">3</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">The Language Of Gris: Comples Beauty Of Monochrome</div>
+                <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio
+                    Anne Holtrop who cleverly emulated
+                </div>
+            </div>
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">4</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">A24 IS LAUNCHING ITS OWN BEAUTY BRAND</div>
+                <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's
+                    introspective lyrics and the album's
+                </div>
+            </div>
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">5</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">Elon Musk's SpaceX is launching a moon satellite</div>
+                <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio
+                    Anne Holtrop who cleverly emulated
+                </div>
+            </div>
+            <div class="blog-right-container">
+                <div class="blog-title-date">
+                    <div class="blog-right-page">6</div>
+                    <div class="date">12.06.2021</div>
+                </div>
+                <div class="blog-right-page-title">What Happens When You Leave Your Old life Behind</div>
+                <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio
+                    Anne Holtrop who cleverly emulated
+                </div>
+            </div>
+            <div class="circle">
+                <div class="circle-title">Leave Your Old Life Behind</div>
+                <div class="circle-subtitle">Don't try to be like someone else, be yourself. Be secure with yourself.
+                </div>
+                <div class="circle-footer">Explore</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="toast"></div>
+
+
+
+
+<script>
+
+    function comment(){
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/comment',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success(data){
+
+            }
+        })
+    }
+</script>
+<script>
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdown-content");
+        if (dropdownContent.style.display === "none") {
+            dropdownContent.style.display = "block";
+        } else {
+            dropdownContent.style.display = "none";
+        }
+    }
+</script>
+
+
+<script>
+    function searchUser(name) {
+        $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/auth/search/${name}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: (user) => {
+                console.log(user)
+                let html = ``;
+                user.forEach(item => {
+                    html += `Tên tài khoản:
+                             <div style="font-size: 40px" class="blog-big__title">${item.username}
+                             <button style="margin-left: 30px" onclick="xoaAccount(${item.id})"><i class="fa-solid fa-trash"></i></button>
+                             </div>
+                            `
+                })
+                $('#body').html(html)
+            }
+        })
+    }
+
+
+
+
+</script>
+
+
+<script src="user/login.js"></script>
+<script src="user/register.js"></script>
+<script src="user/logout.js"></script>
+<script src="post/post.js"></script>
+<script src="account/account.js"></script>
+<script src="upload/Toast.js"></script>
+<script src="comment/comment.js"></script>
+<script>
+    function tym(){
+        const likeBtn = document.querySelector('.like-container');
+        likeBtn.addEventListener('click', function() {
+            likeBtn.classList.toggle('active');
+        });
+    }
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyDxG2vMNkqz1sf4UGAaMzcaq3lVdAN5C8M",
+        authDomain: "users-8f542.firebaseapp.com",
+        projectId: "users-8f542",
+        storageBucket: "users-8f542.appspot.com",
+        messagingSenderId: "351740883393",
+        appId: "1:351740883393:web:b9c6a3bba9f040cf3ebf40",
+        measurementId: "G-KN5Q9HHHL7"
+    };
+    firebase.initializeApp(firebaseConfig);
+</script>
+<script type="text/javascript">
+    function uploadImage(e) {
+        let fbBucketName = 'images';
+        let uploader = document.getElementById('uploader');
+        let file = e.target.files[0];
+        let storageRef = firebase.storage().ref(`${fbBucketName}/${file.name}`);
+        let uploadTask = storageRef.put(file);
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+            function (snapshot) {
+                uploader.value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED:
+                        break;
+                    case firebase.storage.TaskState.RUNNING:
+                        break;
+                }
+            }, function (error) {
+                switch (error.code) {
+                    case 'storage/unauthorized':
+                        break;
+                    case 'storage/canceled':
+                        break;
+                    case 'storage/unknown':
+                        break;
+                }
+            }, function () {
+                let downloadURL = uploadTask.snapshot.downloadURL;
+                console.log(downloadURL);
+                document.getElementById('imgDiv').innerHTML = `<img height="50px", width="50px" src="${downloadURL}" alt="">`
+                document.getElementById('image').value = downloadURL;
+            });
+    }
+</script>
+
+</body>
+
+</html>

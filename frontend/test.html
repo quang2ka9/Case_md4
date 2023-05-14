@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    #dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        /* các thuộc tính khác để tùy chỉnh vị trí và giao diện của dropdown */
+    }
+
+    #dropdown-content a {
+        display: block;
+        font-size: 16px;
+        color: #333;
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+    }
+
+    #dropdown-content a:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+<body>
+<div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn">&#8230;</button>
+    <div id="dropdown-content">
+        <!-- các trường để chọn ở đây -->
+        <a href="#">Lựa chọn 1</a>
+        <a href="#">Lựa chọn 2</a>
+        <a href="#">Lựa chọn 3</a>
+    </div>
+</div>
+
+<script>
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdown-content");
+        if (dropdownContent.style.display === "none") {
+            dropdownContent.style.display = "block";
+        } else {
+            dropdownContent.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
